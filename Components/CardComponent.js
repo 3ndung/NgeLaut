@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { StackNavigator ,TabNavigator } from 'react-navigation';
-import { Icon,Card,CardItem,Thumbnail,Body,Left,Right,Button } from 'native-base';
+import { Card,CardItem,Body,Left } from 'native-base';
+
 
 class CardComponents extends Component {
     constructor(props){
@@ -10,15 +10,16 @@ class CardComponents extends Component {
     
  
     render(){
-        let {ur1,ur2} = this.props;
+        const {tx,ur1,tanggal,teks} = this.props;
         return(
             <Card>
               
                 <CardItem>
                     <Left>
+                        
                         <Body>
-                            <Text> Ocean Forecast System (OFS)</Text>
-                            <Text>date</Text>
+                            <Text> {tx}</Text>
+                            <Text>{tanggal}</Text>
                         </Body>
                         
                     </Left>
@@ -26,35 +27,15 @@ class CardComponents extends Component {
                 <CardItem cardBody>
                     <Image
                     style={{height: 250, width: null, flex: 1}}
-                    source={{uri: 'http://peta-maritim.bmkg.go.id/output/inawaves/2018/11/2018110600/indonesia/swh.gif'}}
+                    source={{uri: ur1}}
                     />
                 </CardItem>
                 <CardItem>
                     <Text>
-                           Significat Wave Height 
+                           {teks}
                     </Text>
                 </CardItem>
-                <CardItem>
-                    <Left>
-                        <Body>
-                            <Text> Ocean Forecast System (OFS)</Text>
-                            <Text>date</Text>
-                        </Body>
-                        
-                    </Left>
-                </CardItem>
-                <CardItem cardBody>
-                    <Image
-                    style={{height: 250, width: null, flex: 1}}
-                    
-                    source={{uri: 'http://peta-maritim.bmkg.go.id/data/output/inawaves/2018/11/2018110500/indonesia/ws.gif'}}
-                    />
-                </CardItem>
-                <CardItem>
-                    <Text>
-                           Surface Wind 
-                    </Text>
-                </CardItem>
+                
             </Card>
         )
     }

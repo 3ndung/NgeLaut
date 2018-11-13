@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import MainScreen from './Components/MainScreen';
-import { Icon } from 'react-base';
+
 
 export default class App extends Component {
  
 
     render(){
+        console.disableYellowBox = true;
         return(
             <AppStackNavigator />
         )

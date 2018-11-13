@@ -1,55 +1,67 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Platform } from 'react-native';
-import { StackNavigator ,TabNavigator } from 'react-navigation';
-import { Icon } from 'react-base';
+import { createBottomTabNavigator } from 'react-navigation';
 import CuacaLaut from './AppTabNavigaror/CuacaLaut';
 import PrakiranCuaca from './AppTabNavigaror/PrakiranCuaca';
 import CitraSatelit from './AppTabNavigaror/CitraSatelit';
+import { Icon } from 'react-native-elements';
 
 
 class MainScreen extends Component {
     static navigationOptions = {
         title : "NgeLautYuk",
+        backgroundColor: '#2979FF',
+        
 }
     render(){
         return(
-            <AppTabNavigator />
+            <AppTabNew />
+            
         )
     }
 }
 
 export default MainScreen;
 
-const AppTabNavigator = TabNavigator({
+
+const AppTabNew = createBottomTabNavigator({
     CuacaLaut:{
-        screen: CuacaLaut
+        screen: CuacaLaut,
+        navigationOptions:{
+            tabBarLabel: 'Cuaca Laut',
+            tabBarIcon: ({tintColor}) => (
+                <Icon 
+                
+                name="waves"
+                type="material"
+                color={tintColor} size={24}/>
+            )
+        }
     },
     PrakiranCuaca:{
-        screen: PrakiranCuaca
+        screen: PrakiranCuaca,
+        navigationOptions:{
+            tabBarLabel: 'Harga Ikan'
+        }
+
     },
     CitraSatelit:{
-        screen: CitraSatelit
+        screen: CitraSatelit,
+        navigationOptions:{
+            tabBarLabel: 'Citra Satelit'
+        }
     }
-},
-{
-    animationEnabled: true,
-    swipeEnabled: true,
-    tabBarPosition: "bottom",
-    tabBarOptions: {
-        style: {
-            ...Platform.select({
-                android: {
-                    backgroundColor: 'white'
-                }
-            })
-        },
-        activeTintColor: '#000',
-        inactiveTintColor: '#d1cece',
-        showLabel: false,
-        showIcon: true
+},{
+    order:['CuacaLaut','CitraSatelit','PrakiranCuaca'],
+    tabBarOptions:{
+        activeBackgroundColor:'#0288D1',
+        activeTintColor:'white',
+        inactiveBackgroundColor:'#01579B',
+        inactiveTintColor:'orange'
     }
-}
-)
+})
+
+
 
 
 
